@@ -18,6 +18,9 @@ return {
 				auto_install = true,
 				indent = { enable = true },
 				highlight = { enable = true },
+                sync_install = false,
+                ignore_install = {},
+                modules = {}
 			})
 		end,
 	},
