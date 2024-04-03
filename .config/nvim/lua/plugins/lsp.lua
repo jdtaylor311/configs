@@ -1,9 +1,5 @@
 return {
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = 'v3.x'
-    },
-    {
         "neovim/nvim-lspconfig",
         event = "BufReadPre",
         dependencies = {
@@ -15,21 +11,19 @@ return {
             "hrsh7th/cmp-cmdline",
             "hrsh7th/nvim-cmp",
             "L3MON4D3/LuaSnip",
-            {
-                "folke/neodev.nvim",
-                opts = {},
-            },
+            "j-hui/fidget.nvim",
+            { "folke/neodev.nvim", opts = {}}
         },
         config = function()
             local cmp = require("cmp")
             local cmp_lsp = require("cmp_nvim_lsp")
-            local lspconfig = require("lspconfig")
             local capabilities = vim.tbl_deep_extend(
                 "force",
                 {},
                 vim.lsp.protocol.make_client_capabilities(),
                 cmp_lsp.default_capabilities()
             )
+            require("fidget").setup({})
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
@@ -37,53 +31,34 @@ return {
                     "pyright",
                     "tsserver",
                     "marksman",
+                    "rust_analyzer"
                 },
                 handlers = {
                     function(server_name)
-                        if server_name == "rust_analyzer" then
+                        if server_name == "rust_analyzer"
+                        then
                             return
                         end
                         require("lspconfig")[server_name].setup({
                             capabilities = capabilities,
                         })
-                        if server_name == "lua_ls" then
-                            lspconfig.lua_ls.setup({
-                                capabilities = capabilities,
-                                settings = {
-                                    Lua = {
-                                        completion = {
-                                            callSnippet = "Replace",
-                                        },
-                                        diagnostics = {
-                                            globals = { "it", "describe", "before_each", "after_each" },
-                                        },
-                                    },
-                                },
-                            })
-                        end
-                        if server_name == "marksman" then
-                            lspconfig.marksman.setup({
-                                capabilities = capabilities,
-                                settings = {
-                                    marksman = {
-                                        completion = {
-                                            callSnippet = "Replace",
-                                        },
-                                    },
-                                },
-                            })
-                        end
                     end,
-                    require('lsp-zero').default_setup,
-                },
-            })
-
-            require("neodev").setup({
-                library = {
-                    plugins = {
-                        { "nvim-dap-ui" },
-                        types = true,
-                    },
+                    ["lua_ls"] = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.lua_ls.setup({
+                            capabilities = capabilities,
+                            settings = {
+                                Lua = {
+                                    completion = {
+                                        callSnippet = "Replace",
+                                    },
+                                    diagnostics = {
+                                        globals = {"vim", "it", "describe", "before_each", "after_each" },
+                                    },
+                                },
+                            },
+                        })
+                    end
                 },
             })
 

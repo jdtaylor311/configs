@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 alias python="python3"
 alias vim="nvim"
@@ -9,11 +9,14 @@ if test -d "/snap/bin"; then
     export PATH="/snap/bin:$PATH"
 fi
 export PATH="~/.local/bin:$PATH"
-export PATH="/opt/homebrew/bin/:$PATH"
+
+if [ -d "/opt/homebrew/bin"]; then
+    export PATH="/opt/homebrew/bin/:$PATH"
+fi
 
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if type brew &>/dev/null
 then
@@ -35,3 +38,4 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
