@@ -5,12 +5,12 @@ alias python="python3"
 alias vim="nvim"
 alias ls="ls -al"
 
-if test -d "/snap/bin"; then
+if [ -d "/snap/bin" ]; then
     export PATH="/snap/bin:$PATH"
 fi
 export PATH="~/.local/bin:$PATH"
 
-if [ -d "/opt/homebrew/bin"]; then
+if [ -d "/opt/homebrew/bin" ]; then
     export PATH="/opt/homebrew/bin/:$PATH"
 fi
 
