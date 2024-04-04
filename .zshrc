@@ -18,14 +18,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
+  autoload -U +X compinit && compinit
   autoload bashcompinit && bashcompinit
-source $(brew --prefix)/etc/bash_completion.d/az
-  autoload -Uz compinit
-  compinit
+  source $(brew --prefix)/etc/bash_completion.d/az
 fi
 
 if test -d "usr/local/bin/aws_completer"; then

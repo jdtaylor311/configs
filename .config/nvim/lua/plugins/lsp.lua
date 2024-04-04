@@ -58,7 +58,13 @@ return {
                                 },
                             },
                         })
-                    end
+                    end,
+                    ["bashls"] = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.bashls.setup({
+                            filetypes = { "sh", "zsh" },
+                        })
+                    end,
                 },
             })
 
