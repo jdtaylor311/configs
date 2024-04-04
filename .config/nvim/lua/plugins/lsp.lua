@@ -31,7 +31,8 @@ return {
                     "pyright",
                     "tsserver",
                     "marksman",
-                    "rust_analyzer"
+                    "rust_analyzer",
+                    "bashls",
                 },
                 handlers = {
                     function(server_name)
