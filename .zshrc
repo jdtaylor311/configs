@@ -58,3 +58,6 @@ eval "$(fzf --zsh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 eval "$(starship init zsh)"
+
+# opam configuration
+[[ ! -r /Users/jdtaylor311/.opam/opam-init/init.zsh ]] || source /Users/jdtaylor311/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
