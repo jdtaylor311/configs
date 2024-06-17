@@ -94,4 +94,5 @@ return {
 			table.insert(opts.sources, { name = "emoji" })
 		end,
 	},
+	"jlcrochet/vim-razor",
 }
