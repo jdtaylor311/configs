@@ -23,6 +23,7 @@ if type brew &>/dev/null; then
 	autoload -U +X compinit && compinit
 	autoload bashcompinit && bashcompinit
 	source "$(brew --prefix)"/etc/bash_completion.d/az
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # zsh parameter completion for the dotnet CLI
@@ -46,9 +47,9 @@ export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
 # source ~/qmk_firmware/util/qmk_tab_complete.sh
 
-eval "$(fzf --zsh)"
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
