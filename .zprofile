@@ -13,3 +13,4 @@ source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 # >>> coursier install directory >>>
 export PATH="$PATH:/Users/jdtaylor311/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
+export PATH="$PATH:/Users/jdtaylor311/.dotnet/tools"
