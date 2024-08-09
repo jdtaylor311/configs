@@ -1,6 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
 vim.g.mapleader = " "
 
 vim.opt.encoding = "utf-8"
@@ -43,5 +40,5 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 vim.opt.formatoptions:append({ "r" })
 
 if vim.fn.has("nvim-0.8") == 1 then
-  vim.opt.cmdheight = 0
+	vim.opt.cmdheight = 0
 end

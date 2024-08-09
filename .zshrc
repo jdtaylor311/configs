@@ -44,6 +44,7 @@ _dotnet_zsh_complete()
 compdef _dotnet_zsh_complete dotnet
 
 export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+eval "$(fnm env --use-on-cd)"
 
 # source ~/qmk_firmware/util/qmk_tab_complete.sh
 
