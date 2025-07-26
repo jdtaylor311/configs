@@ -4,8 +4,8 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/development/flutter/bin:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
-autoload bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
+export PATH="/usr/local/:$PATH"
+
 
 alias python="python3"
 alias vim="nvim"
@@ -24,7 +24,6 @@ if type brew &>/dev/null; then
 	FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 	autoload -U +X compinit && compinit
 	autoload bashcompinit && bashcompinit
-	source "$(brew --prefix)"/etc/bash_completion.d/az
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
@@ -56,18 +55,8 @@ eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-[[ ! -r '/Users/jdtaylor311/.opam/opam-init/init.zsh' ]] || source '/Users/jdtaylor311/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-# END opam configuration
-
-# bun completions
-[ -s "/Users/jdtaylor311/.bun/_bun" ] && source "/Users/jdtaylor311/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#   tmux attach-session -t default || tmux new-session -s default
+# fi
