@@ -1,0 +1,8 @@
+#playbook.yml
+- name : Hello Ansible
+  hosts: local
+  connection: local
+  tasks:
+    - name: Print a debug message
+      debug:
+        msg: "Hello, this is my first playbook"
